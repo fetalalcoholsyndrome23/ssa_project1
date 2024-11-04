@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-n^0^)$f231d%k1k8#mds672+s9m)237sj#60*48dztj2=f10#1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+RECAPTCHA_SECRET_KEY = "6LeMRm4qAAAAAPslEmmSL7zQBpwLV-YHw0R99ytB"
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
@@ -120,3 +121,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Installing an SSL/TLS certificate for HTTPS encryption
+SECURE_SSL_REDIRECT = True  # Redirect all HTTP traffic to HTTPS
+SESSION_COOKIE_SECURE = True  # Ensures cookies are only sent over HTTPS
+CSRF_COOKIE_SECURE = True  # Ensures CSRF tokens are only sent over HTTPS
