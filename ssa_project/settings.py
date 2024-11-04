@@ -124,5 +124,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Installing an SSL/TLS certificate for HTTPS encryption
 SECURE_SSL_REDIRECT = False  # Redirect all HTTP traffic to HTTPS
-SESSION_COOKIE_SECURE = True  # Ensures cookies are only sent over HTTPS
-CSRF_COOKIE_SECURE = True  # Ensures CSRF tokens are only sent over HTTPS
+SESSION_COOKIE_SECURE = False  # Ensures cookies are only sent over HTTPS
+CSRF_COOKIE_SECURE = False  # Ensures CSRF tokens are only sent over HTTPS
