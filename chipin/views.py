@@ -96,3 +96,26 @@ def accept_invite(request, group_id):
     else:
         messages.error(request, "Invalid invitation link.")  
     return redirect('chipin:group_detail', group_id=group.id)
+
+def send_invitation_email(group, email, request):
+    encoded_email = urllib.parse.quote(email)
+    invite_url = request.build_absolute_uri(reverse('chipin:accept_invite', args=[group.id])) + f"?email={encoded_email}"
+    subject = f"You have been invited to join the group {group.name}"
+    message = (
+        f"
+You have been invited to join the group {group.name}.
+
+"
+        f"
+OK
+
+"
+    )
+
+    send_mail(
+        subject,
+        '',  # No plain text body, only HTML
+        f"ChipIn ",
+        [email],
+        html_message=message,  # The HTML message
+    )
