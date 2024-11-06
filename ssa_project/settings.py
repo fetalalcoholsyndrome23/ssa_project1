@@ -26,17 +26,32 @@ SECRET_KEY = 'django-insecure-n^0^)$f231d%k1k8#mds672+s9m)237sj#60*48dztj2=f10#1
 DEBUG = True
 
 RECAPTCHA_SECRET_KEY = "6LeMRm4qAAAAAPslEmmSL7zQBpwLV-YHw0R99ytB"
+
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+ANYMAIL = {
+    "MAILGUN_API_KEY": "b96ce86f2fe25385562b3f1c695d2788-f6fe91d3-c4737a55",
+    "MAILGUN_SENDER_DOMAIN": "mg.chipin.com", 
+}
+
+DEFAULT_FROM_EMAIL = "doh@parrastu.catholic.edu.au"
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "postmaster@mg.chipin.com"
+EMAIL_HOST_PASSWORD = "chipinsoftware1"
+
 INSTALLED_APPS = [
-   'users',
-   'chipin',
-   'django.contrib.admin',
-   'django.contrib.auth',
-   'django.contrib.contenttypes',
-   'django.contrib.sessions',
-   'django.contrib.messages',
-   'django.contrib.staticfiles',
+    'anymail',
+    'users',
+    'chipin',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
