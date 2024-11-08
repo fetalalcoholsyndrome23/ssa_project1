@@ -102,14 +102,14 @@ def send_invitation_email(group, email, request):
     invite_url = request.build_absolute_uri(reverse('chipin:accept_invite', args=[group.id])) + f"?email={encoded_email}"
     subject = f"You have been invited to join the group {group.name}"
     message = (
-        f"
+        f"""
 You have been invited to join the group {group.name}.
 
-"
-        f"
+"""
+        f"""
 OK
 
-"
+"""
     )
 
     send_mail(

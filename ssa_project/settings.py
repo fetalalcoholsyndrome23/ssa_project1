@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 ANYMAIL = {
-    "MAILGUN_API_KEY": "b96ce86f2fe25385562b3f1c695d2788-f6fe91d3-c4737a55",
+    "MAILGUN_API_KEY": "52463ea856b2e095bfe3d199c48a184c-f6fe91d3-f24633f7",
     "MAILGUN_SENDER_DOMAIN": "mg.chipin.com", 
 }
 
@@ -40,7 +40,7 @@ EMAIL_HOST = "smtp.mailgun.org"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "postmaster@mg.chipin.com"
-EMAIL_HOST_PASSWORD = "chipinsoftware1"
+EMAIL_HOST_PASSWORD = "d6d301f64a0fdb052808191d6ff7d393-f6fe91d3-5ff42fca"
 
 INSTALLED_APPS = [
     'anymail',
