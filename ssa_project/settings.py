@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-n^0^)$f231d%k1k8#mds672+s9m)237sj#60*48dztj2=f10#1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-RECAPTCHA_SECRET_KEY = "6LeMRm4qAAAAAPslEmmSL7zQBpwLV-YHw0R99ytB"
+RECAPTCHA_SECRET_KEY = "6Le5C28qAAAAAFuGJekCAiGIttH7g06ro1jBLH3s"
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
@@ -120,6 +120,11 @@ USE_I18N = True
 
 USE_TZ = True
 
+SESSION_COOKIE_SECURE = True  # Ensures session cookies are only sent over HTTPS
+SESSION_COOKIE_HTTPONLY = True  # Prevents JavaScript access to session cookies
+SESSION_COOKIE_SAMESITE = 'Lax'  # Protects against Cross-Site Request Forgery (CSRF) attacks
+SESSION_COOKIE_AGE = 1800  # 30-minute session expiration
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -130,3 +135,22 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': 'chipin_error.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}
