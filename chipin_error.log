@@ -1565,3 +1565,57 @@ Traceback (most recent call last):
     )
 django.contrib.auth.models.User.profile.RelatedObjectDoesNotExist: User has no profile.
 "GET /chipin/group/8/ HTTP/1.1" 500 76601
+Internal Server Error: /chipin/group/8/event/9/join/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/danieloh/ssa_project/chipin/views.py", line 273, in join_event
+    event.check_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/Users/danieloh/ssa_project/chipin/models.py", line 48, in check_status
+    if member.profile.max_spend < share:
+       ^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/fields/related_descriptors.py", line 531, in __get__
+    raise self.RelatedObjectDoesNotExist(
+    ...<2 lines>...
+    )
+django.contrib.auth.models.User.profile.RelatedObjectDoesNotExist: User has no profile.
+"GET /chipin/group/8/event/9/join/ HTTP/1.1" 500 75298
+Internal Server Error: /chipin/group/9/invite/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/danieloh/ssa_project/chipin/views.py", line 112, in invite_users
+    messages.success(request, f'Invitation sent to {invited_user.profile.nickname}.')
+                                                    ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/fields/related_descriptors.py", line 531, in __get__
+    raise self.RelatedObjectDoesNotExist(
+    ...<2 lines>...
+    )
+django.contrib.auth.models.User.profile.RelatedObjectDoesNotExist: User has no profile.
+"POST /chipin/group/9/invite/ HTTP/1.1" 500 72857
+Internal Server Error: /chipin/group/9/invite/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/danieloh/ssa_project/chipin/views.py", line 109, in invite_users
+    messages.info(request, f'{invited_user.profile.nickname} has already been invited.')
+                              ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/fields/related_descriptors.py", line 531, in __get__
+    raise self.RelatedObjectDoesNotExist(
+    ...<2 lines>...
+    )
+django.contrib.auth.models.User.profile.RelatedObjectDoesNotExist: User has no profile.
+"POST /chipin/group/9/invite/ HTTP/1.1" 500 72943

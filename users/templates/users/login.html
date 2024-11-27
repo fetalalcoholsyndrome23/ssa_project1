@@ -11,14 +11,14 @@
             <button type="submit">Login</button>
         </form>
     </div>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LeCO4QqAAAAADvfiAh_ZNVLjlEysa3X6VsG88Fp"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcgJIoqAAAAACJI7uW7wvKoVjp16hTJG3w3zfW_"></script>
     <script>
         function executeRecaptcha() {
             grecaptcha.ready(function() {
-                grecaptcha.execute('6LeCO4QqAAAAADvfiAh_ZNVLjlEysa3X6VsG88Fp', { action: 'submit' }).then(function(token) {
+                grecaptcha.execute('6LcgJIoqAAAAACJI7uW7wvKoVjp16hTJG3w3zfW_', { action: 'submit' }).then(function(token) {
                     document.getElementById('recaptcha-token').value = token;
                     document.getElementById('login-form').submit();
-                }); 
+                });
             });
             return false;  // Prevent default form submission
         }
