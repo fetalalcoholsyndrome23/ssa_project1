@@ -8,17 +8,21 @@ from django.contrib import messages
 from .forms import UserRegistrationForm
 import requests
 from django.conf import settings
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 
-def register(request):
-    if request.method == "POST":
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Your account has been created! You can now log in.")
-            return redirect('users:login')
-    else:
-        form = UserRegistrationForm()
-    return render(request, 'users/register.html', {'form': form})
+def top_up_view(request, user_id):
+    user = get_object_or_404(User, id=user_id)  # Get the user by ID
+    # You can now implement logic for the top-up page, e.g., displaying the user's current balance
+    return render(request, 'users/top_up.html', {'user': user})
+
+def user_view(request):
+    profile = request.user.profile  # Get the logged-in user's profile
+    return render(request, 'users/user.html', {
+        'user': request.user,  # Pass the user object
+        'balance': profile.balance  # Pass the user's balance
+    })
+    
 @login_required(login_url='users:login')
 def user(request):
     return render(request, "users/user.html")
