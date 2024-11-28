@@ -1682,6 +1682,7 @@ Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/urls/base.py", line 82, in reverse
     raise NoReverseMatch("%s is not a registered namespace" % key)
 django.urls.exceptions.NoReverseMatch: 'user' is not a registered namespace
+<<<<<<< HEAD
 "GET /users/ HTTP/1.1" 500 148231
 Internal Server Error: /users/
 Traceback (most recent call last):
@@ -1810,6 +1811,8 @@ Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/urls/base.py", line 82, in reverse
     raise NoReverseMatch("%s is not a registered namespace" % key)
 django.urls.exceptions.NoReverseMatch: 'user' is not a registered namespace
+=======
+>>>>>>> cebbfb8c7aa3ccb9dbbb20868a375de9aa97c925
 "GET /users/ HTTP/1.1" 500 148094
 Internal Server Error: /users/
 Traceback (most recent call last):
@@ -1825,10 +1828,18 @@ Traceback (most recent call last):
     response = get_response(request)
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+<<<<<<< HEAD
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
     return view_func(request, *args, **kwargs)
   File "/Users/danieloh/ssa_project/users/views.py", line 83, in user
     return render(request, "users/user.html")
+=======
+  File "/Users/danieloh/ssa_project/users/views.py", line 127, in user
+    return render(request, 'users/user.html', {
+        'user': request.user,
+        'balance': profile.balance
+    })
+>>>>>>> cebbfb8c7aa3ccb9dbbb20868a375de9aa97c925
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
     content = loader.render_to_string(template_name, context, request, using=using)
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
@@ -1874,7 +1885,11 @@ Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/urls/base.py", line 82, in reverse
     raise NoReverseMatch("%s is not a registered namespace" % key)
 django.urls.exceptions.NoReverseMatch: 'user' is not a registered namespace
+<<<<<<< HEAD
 "GET /users/ HTTP/1.1" 500 148094
+=======
+"GET /users/ HTTP/1.1" 500 144476
+>>>>>>> cebbfb8c7aa3ccb9dbbb20868a375de9aa97c925
 Internal Server Error: /users/
 Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/urls/base.py", line 71, in reverse
@@ -1889,10 +1904,18 @@ Traceback (most recent call last):
     response = get_response(request)
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+<<<<<<< HEAD
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
     return view_func(request, *args, **kwargs)
   File "/Users/danieloh/ssa_project/users/views.py", line 83, in user
     return render(request, "users/user.html")
+=======
+  File "/Users/danieloh/ssa_project/users/views.py", line 127, in user
+    return render(request, 'users/user.html', {
+        'user': request.user,
+        'balance': profile.balance
+    })
+>>>>>>> cebbfb8c7aa3ccb9dbbb20868a375de9aa97c925
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
     content = loader.render_to_string(template_name, context, request, using=using)
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
@@ -1938,7 +1961,11 @@ Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/urls/base.py", line 82, in reverse
     raise NoReverseMatch("%s is not a registered namespace" % key)
 django.urls.exceptions.NoReverseMatch: 'user' is not a registered namespace
+<<<<<<< HEAD
 "GET /users/ HTTP/1.1" 500 148094
+=======
+"GET /users/ HTTP/1.1" 500 144476
+>>>>>>> cebbfb8c7aa3ccb9dbbb20868a375de9aa97c925
 Internal Server Error: /users/
 Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/urls/base.py", line 71, in reverse
@@ -1953,10 +1980,18 @@ Traceback (most recent call last):
     response = get_response(request)
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+<<<<<<< HEAD
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
     return view_func(request, *args, **kwargs)
   File "/Users/danieloh/ssa_project/users/views.py", line 83, in user
     return render(request, "users/user.html")
+=======
+  File "/Users/danieloh/ssa_project/users/views.py", line 127, in user
+    return render(request, 'users/user.html', {
+        'user': request.user,
+        'balance': profile.balance
+    })
+>>>>>>> cebbfb8c7aa3ccb9dbbb20868a375de9aa97c925
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
     content = loader.render_to_string(template_name, context, request, using=using)
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
@@ -2002,6 +2037,7 @@ Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/urls/base.py", line 82, in reverse
     raise NoReverseMatch("%s is not a registered namespace" % key)
 django.urls.exceptions.NoReverseMatch: 'user' is not a registered namespace
+<<<<<<< HEAD
 "GET /users/ HTTP/1.1" 500 148094
 Internal Server Error: /users/
 Traceback (most recent call last):
@@ -2704,3 +2740,6 @@ Traceback (most recent call last):
            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
 django.db.utils.OperationalError: no such column: users_profile.amount
 "GET /users/ HTTP/1.1" 500 180163
+=======
+"GET /users/ HTTP/1.1" 500 144339
+>>>>>>> cebbfb8c7aa3ccb9dbbb20868a375de9aa97c925

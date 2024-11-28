@@ -121,3 +121,14 @@ def logout_view(request):
     logout(request)
     messages.success(request, "Successfully logged out.")
     return redirect('users:login')
+
+def user_view(request):
+    profile = request.user.profile  # Get the logged-in user's profile
+    return render(request, 'users/user.html', {'balance': profile.balance})
+
+def user(request):
+    profile = request.user.profile
+    return render(request, 'users/user.html', {
+        'user': request.user,
+        'balance': profile.balance
+    })
