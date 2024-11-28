@@ -4,16 +4,6 @@ from django.core.exceptions import ValidationError
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-def user(request):
-    profile = request.user.profile
-    return render(request, 'users/user.html', {
-        'user': request.user,
-        'balance': profile.balance
-    })
-def user_view(request):
-    profile = request.user.profile  # Get the logged-in user's profile
-    return render(request, 'users/user.html', {'balance': profile.balance})
-
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

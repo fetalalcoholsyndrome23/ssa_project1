@@ -4,10 +4,8 @@
 
 {% block content %}
     <h2>Welcome {{ request.user.first_name }}</h2>
-    <p>Current Balance: ${{ balance }}</p>
-    <a href="{% url 'user:top_up' user.id %}">Make a Payment</a>
     <p>This page is for user management functions.</p>
-    <p>Current Balance: ${{ balance }}</p>
-    <a href="{% url 'user:top_up' user.id %}">Make a Payment</a><br><br>
+    <p><b>Current Balance:</b> ${{ balance }}</p>
+    <a href="{% url 'users:top_up' user.id %}">Make a Payment</a><br><br>
     <a href="{% url 'chipin:home' %}">Click through to ChipIn Functions</a>
 {% endblock %}

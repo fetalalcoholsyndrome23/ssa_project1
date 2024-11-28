@@ -11,18 +11,13 @@ from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 
-def top_up_view(request, user_id):
-    user = get_object_or_404(User, id=user_id)  # Get the user by ID
-    # You can now implement logic for the top-up page, e.g., displaying the user's current balance
-    return render(request, 'users/top_up.html', {'user': user})
-
 def user_view(request):
     profile = request.user.profile  # Get the logged-in user's profile
     return render(request, 'users/user.html', {
         'user': request.user,  # Pass the user object
         'balance': profile.balance  # Pass the user's balance
     })
-    
+
 @login_required(login_url='users:login')
 def user(request):
     return render(request, "users/user.html")
@@ -62,15 +57,6 @@ def logout_view(request):
     logout(request)
     messages.success(request, "Successfully logged out.")
     return redirect('users:login')
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from .forms import UserRegistrationForm
-import requests
-from django.conf import settings
 
 def register(request):
     if request.method == "POST":
@@ -82,53 +68,8 @@ def register(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'users/register.html', {'form': form})
-@login_required(login_url='users:login')
-def user(request):
-    return render(request, "users/user.html")
 
-def login_view(request):
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        recaptcha_response = request.POST.get("recaptcha-token")  # Updated
-        # Verify reCAPTCHA
-        data = {
-            'secret': settings.RECAPTCHA_SECRET_KEY,
-            'response': recaptcha_response,
-            'remoteip': request.META.get('REMOTE_ADDR'),
-        }
-        recaptcha_verification = requests.post(
-            "https://www.google.com/recaptcha/api/siteverify",
-            data=data
-        )
-        result = recaptcha_verification.json()
-        # Check reCAPTCHA response
-        if not result.get("success"):
-            messages.error(request, "reCAPTCHA validation failed. Please try again.")
-            return redirect("users:login")  # Redirect back to the login page
-        # Authenticate user if reCAPTCHA is valid
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            # Redirect to the next URL if provided, else default to user profile
-            next_url = request.GET.get('next', reverse("users:user"))  # Simplified fallback
-            return redirect(next_url)
-        else:
-            messages.error(request, "Invalid username or password.")
-    return render(request, "users/login.html")
-
-def logout_view(request):
-    logout(request)
-    messages.success(request, "Successfully logged out.")
-    return redirect('users:login')
-
-def user_view(request):
-    profile = request.user.profile  # Get the logged-in user's profile
-    return render(request, 'users/user.html', {'balance': profile.balance})
-
-def user(request):
-    profile = request.user.profile
-    return render(request, 'users/user.html', {
-        'user': request.user,
-        'balance': profile.balance
-    })
+def top_up(request, user_id):
+    user = get_object_or_404(User, id=user_id)  # Get the user by ID
+    # Add your top-up logic here, e.g., showing a form or current balance
+    return render(request, 'users/top_up.html', {'user': user})
