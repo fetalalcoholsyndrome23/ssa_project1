@@ -69,7 +69,16 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'users/register.html', {'form': form})
 
-def top_up(request, user_id):
-    user = get_object_or_404(User, id=user_id)  # Get the user by ID
-    # Add your top-up logic here, e.g., showing a form or current balance
-    return render(request, 'users/top_up.html', {'user': user})
+def top_up(request):
+    Profile = request.user.profile
+    if request.method == 'POST':
+        form = UserTopUp(request.POST)
+        if form.is_valid():
+            amount = form.cleaned_data['amount']
+            Profile.balance += amount
+            Profile.save()
+            messages.success(request, f"${amount} has been successfully added to your balance")
+            return redirect('users:user')
+    else:
+        form = UserTopUp()
+    return render(request, 'users/topup.html', {'form': form, 'balance': Profile.balance})

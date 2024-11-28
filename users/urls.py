@@ -7,6 +7,5 @@ urlpatterns = [
     path("login", views.login_view, name="login"),
     path("logout", views.logout_view, name="logout"),
     path('register/', views.register, name='register'),
-    path('top-up/<int:user_id>/', views.top_up, name='top_up'),  # The top-up page
-    path('profile/', views.user_view, name='profile'),  # The user profile page
+    path('users/top_up/<int:user_id>/', views.top_up, name='top_up')
 ]

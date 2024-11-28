@@ -31,6 +31,7 @@ class Profile(models.Model):
     max_spend = models.DecimalField(max_digits=10, decimal_places=2, default=100.00)  # Max spend for each event
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=100.00)  # User's current balance
 
+
     def clean(self):
         validate_unique_nickname(self.nickname, instance=self)
 
@@ -39,4 +40,5 @@ class Profile(models.Model):
         super().save(*args, **kwargs)    
 
     def __str__(self):
-        return self.user.username
+        return f"self.user.username - ${self.balance}" 
+    
