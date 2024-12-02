@@ -1,11 +1,30 @@
 {% extends 'chipin/base.html' %}
 {% load static %}
 {% block content %}
+    <style>
+        /* Import a Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            background-color: #f2dbb7;
+            font-family: 'Parkinsans', sans-serif; /* Applying Roboto font to the entire body */
+        }
+
+        h2 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700; /* Bold style */
+        }
+
+        p, a {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400; /* Regular style */
+        }
+    </style>
     <h1>Top up balance</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p}}
-        <button type="submit" class="btn btn-primary">Confrim</button>
+        <button type="submit" class="btn btn-primary">Confirm</button>
     </form>
     <a href="{% url 'users:user' %}" >Back to Homepage</a>
 {% endblock %}

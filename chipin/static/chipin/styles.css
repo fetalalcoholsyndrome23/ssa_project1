@@ -3,9 +3,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f4f4f4;
+    background-color: #f2dbb7;
     padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #f2dbb7;
 }
 
 /* Style for the logo in the header */
@@ -29,7 +29,7 @@
 /* Logout button styling */
 .user-info button {
     background-color: #007BFF;
-    color: white;
+    color: #f2dbb7;
     border: none;
     padding: 8px 12px;
     cursor: pointer;

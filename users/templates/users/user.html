@@ -3,9 +3,28 @@
 {% block title %}User Management{% endblock %}
 
 {% block content %} 
+    <style>
+        /* Import a Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            background-color: #f2dbb7;
+            font-family: 'Parkinsans', sans-serif; /* Applying Roboto font to the entire body */
+        }
+
+        h2 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700; /* Bold style */
+        }
+
+        p, a {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400; /* Regular style */
+        }
+    </style>
     <h2>Welcome {{ request.user.first_name }}</h2>
     <p>This page is for user management functions.</p>
     <p>Your current balance is: ${{ balance }}</p>
-    <a href="{% url 'users:top_up' %}">Top Up Balance</a>
+    <a href="{% url 'users:top_up' %}">Top Up Balance</a><br><br>
     <a href="{% url 'chipin:home' %}">Click through to ChipIn Functions</a>
 {% endblock %}
