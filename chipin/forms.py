@@ -18,8 +18,6 @@ class GroupCreationForm(forms.ModelForm):
             group.members.add(self.user)  # Add the admin to the members list
         return group
     
-   
-
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
