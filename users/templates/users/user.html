@@ -27,4 +27,36 @@
     <p>Your current balance is: ${{ balance }}</p>
     <a href="{% url 'users:top_up' %}">Top Up Balance</a><br><br>
     <a href="{% url 'chipin:home' %}">Click through to ChipIn Functions</a>
+
+    <h2>Transaction History</h2>
+<div class="transaction-container">
+  {% if transactions %}
+    <table class="transaction-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for transaction in transactions %}
+          <tr>
+            <td>{{ transaction.created_at|date:"Y-m-d H:i" }}</td>
+            <td class="{% if transaction.amount < 0 %}negative{% else %}positive{% endif %}">
+              ${{ transaction.amount }}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No transactions to display.</p>
+  {% endif %}
+</div>
+
+<nav>
+  <a href="{% url 'home' %}">Home</a>
+  <a href="{% url 'my_groups' %}">My Groups</a>
+</nav>
+
 {% endblock %}
