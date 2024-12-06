@@ -3,60 +3,87 @@
 {% block title %}User Management{% endblock %}
 
 {% block content %} 
-    <style>
-        /* Import a Google Font */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+<style>
+    /* Import a Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-        body {
-            background-color: #f2dbb7;
-            font-family: 'Parkinsans', sans-serif; /* Applying Roboto font to the entire body */
-        }
+    body {
+        background-color: #f2dbb7;
+        font-family: 'Roboto', sans-serif; /* Applying Roboto font to the entire body */
+    }
 
-        h2 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700; /* Bold style */
-        }
+    h2 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700; /* Bold style */
+    }
 
-        p, a {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 400; /* Regular style */
-        }
-    </style>
-    <h2>Welcome {{ request.user.first_name }}</h2>
-    <p>This page is for user management functions.</p>
-    <p>Your current balance is: ${{ balance }}</p>
-    <a href="{% url 'users:top_up' %}">Top Up Balance</a><br><br>
-    <a href="{% url 'chipin:home' %}">Click through to ChipIn Functions</a>
+    p, a {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400; /* Regular style */
+    }
 
-    <h2>Transaction History</h2>
-<div class="transaction-container">
-  {% if transactions %}
-    <table class="transaction-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for transaction in transactions %}
-          <tr>
-            <td>{{ transaction.created_at|date:"Y-m-d H:i" }}</td>
-            <td class="{% if transaction.amount < 0 %}negative{% else %}positive{% endif %}">
-              ${{ transaction.amount }}
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
+    /* Table styling */
+    table {
+        width: 50%; /* Set a fixed width for the table */
+        border-collapse: collapse; /* Removes double borders */
+        margin-left: 0; /* Aligns the table to the left */
+    }
+
+    th, td {
+        border: 1px solid #ccc; /* Adds light gray outlines */
+        text-align: left;
+        padding: 8px; /* Adds space inside cells */
+        word-wrap: break-word; /* Ensures text wraps within cells */
+        max-width: 200px; /* Limits cell width to 200px */
+    }
+
+    td {
+        text-overflow: ellipsis; /* Adds ellipsis for long text */
+        overflow: hidden;
+        white-space: nowrap; /* Prevents text wrapping */
+    }
+
+    th {
+        background-color: #e6c497; /* Slightly darker background for headers */
+        font-weight: 700;
+    }
+
+    tr:nth-child(even) td {
+        background-color: #f9f9f9; /* Alternating row colors */
+    }
+
+    tr:hover td {
+        background-color: #f5e1c0; /* Highlight row on hover */
+    }
+</style>
+
+<h2>Welcome {{ request.user.first_name }}</h2>
+<p>This page is for user management functions.</p>
+<p>Your current balance is: ${{ balance }}</p>
+<a href="{% url 'users:top_up' %}">Top Up Balance</a>
+<br></br>
+<a href="{% url 'chipin:home' %}">Click through to ChipIn Functions</a>
+<h3>Your Transaction History:</h3>
+{% if transactions %}
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>${{ transaction.amount }}</td>
+                    <td>{{ transaction.created_at|date:"M d, Y h:i" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
     <p>No transactions to display.</p>
-  {% endif %}
-</div>
-
-<nav>
-  <a href="{% url 'home' %}">Home</a>
-  <a href="{% url 'my_groups' %}">My Groups</a>
-</nav>
-
+{% endif %}
 {% endblock %}
