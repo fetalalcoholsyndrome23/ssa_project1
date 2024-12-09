@@ -13,6 +13,15 @@ from .forms import GroupCreationForm, CommentForm
 from .models import Group, Comment, GroupJoinRequest, Event
 from chipin.models import Event
 import urllib.parse
+from .utils import censor_message
+
+def post_message(request):
+    if request.method == "POST":
+        content = request.POST.get("content", "")
+        censored_content = censor_message(content)
+        messages.objects.create(content=censored_content, user=request.user)
+        return redirect("chat_room")
+    return render(request, "chat/post_message.html")
 
 def transfer_funds(request, group_id, event_id):
     group = get_object_or_404(Group, id=group_id)
@@ -20,7 +29,7 @@ def transfer_funds(request, group_id, event_id):
     insufficient_funds = False
 
     if request.user != group.admin:
-        messages.error(request, "you no admin")
+        messages.error(request, "You're not admin")
         return redirect('group_detail', group_id=group_id)
     
     archive = event.check_archived()

@@ -39,3 +39,8 @@
     </footer>
 </body>
 </html>
+<ul>
+    {% for message in messages %}
+        <li><strong>{{ message.user.username }}:</strong> {{ message.content }}</li>
+    {% endfor %}
+</ul>
