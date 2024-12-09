@@ -20,7 +20,7 @@ def transfer_funds(request, group_id, event_id):
     insufficient_funds = False
 
     if request.user != group.admin:
-        messages.error(request, "you no admin")
+        messages.error(request, "You are not group administrator")
         return redirect('group_detail', group_id=group_id)
     
     archive = event.check_archived()
@@ -38,7 +38,7 @@ def transfer_funds(request, group_id, event_id):
             insufficient_funds = True
     
     if insufficient_funds == True:
-        messages.error(request, f"not all members have sufficinet funds")
+        messages.error(request, f"not all members have sufficient funds")
         return redirect('chipin:group_detail', group_id=group.id)
     
     with transaction.atomic():
@@ -58,13 +58,13 @@ def transfer_funds(request, group_id, event_id):
             profile.save()
             Transcation.objects.create(user=request.user, amount=total_spend)
         else:
-            messages.error(request, "you are not the admin")
+            messages.error(request, "You are not group administrator")
 
         event.save()
         messages.success(request, "Funds transferred")
         return redirect('chipin:group_detail', group_id=group.id)
 
-    messages.error(request, "there was an error")
+    messages.error(request, "There was an error")
     return redirect('chipin:group_detail', group_id=group.id)
 
 @login_required
@@ -158,7 +158,6 @@ def join_event(request, group_id, event_id):
     event.check_status()
     event.save()
     return redirect('chipin:group_detail', group_id=group.id)
-
 
 @login_required
 def update_event_status(request, group_id, event_id):
@@ -257,7 +256,6 @@ def leave_group(request, group_id):
         messages.error(request, 'You are not a member of this group.') 
     return redirect('chipin:home')  
 
-
 @login_required
 def home(request):
     user = request.user
@@ -284,8 +282,6 @@ def create_group(request):
     else:
         form = GroupCreationForm(user=request.user)
     return render(request, 'chipin/create_group.html', {'form': form})
-
-
 
 @login_required
 def delete_group(request, group_id):

@@ -9,7 +9,6 @@ class Event(models.Model):
     group = models.ForeignKey('Group', related_name='events', on_delete=models.CASCADE)
     members = models.ManyToManyField(User, related_name='event_memberships', blank=True) 
 
-
     def calculate_share(self):
         members_count = self.members.count()
         if members_count == 0:
@@ -63,4 +62,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.user.username}: {self.content[:20]}..."  # Show only first 20 chars for preview
-    
